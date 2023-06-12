@@ -1,0 +1,33 @@
+<!-- Voice selects Style by name.-->
+<!-- https://docs.aws.amazon.com/polly/latest/dg/supportedtags.html -->
+<voice style="chill" id="Salli" engine="standard" language="en-US" xmlns:amazon="amazon">
+    <style name="base"> <!-- Style start -->
+        <speak> <!-- SSML start -->
+            <prosody rate="100%">
+                {text}
+            </prosody>
+        </speak>
+    </style>
+    <style name="chill">
+        <speak>
+            <amazon:auto-breaths volume="medium" frequency="medium" duration="short">
+                <amazon:effect vocal-tract-length="105%">
+                    <amazon:effect phonation="soft">
+                        <prosody rate="100%">
+                            {text}
+                        </prosody>
+                    </amazon:effect>
+                </amazon:effect>
+            </amazon:auto-breaths>
+        </speak>
+    </style>
+    <style name="rush">
+        <speak>
+            <amazon:effect vocal-tract-length="100%">
+                <prosody rate="105%">
+                    {text}
+                </prosody>
+            </amazon:effect>
+        </speak>
+    </style>
+</voice>

@@ -1,0 +1,46 @@
+[assistant]
+    [assistant.wakeup]
+    triggers = ["hello there"]
+    include_assistant_name = true
+    awake_seconds = 60
+
+    [assistant.sleep]
+    triggers = ["goodbye"]
+
+[models]
+    [models.chat]
+    model = "gpt-3.5-turbo"
+    temperature = 0.7
+    max_completion_tokens = 512
+    max_system_tokens = 512
+    max_total_tokens = 2048
+    
+    [models.transcribe]
+    language = "English"
+    model = "base.en"
+    fp16 = false
+    initial_prompt = "Python, SQL, Postgres."
+    include_assistant_name = true
+
+[audio]
+    [audio.channel]
+    samplerate = 24000
+    chunk = 2048
+    bitrate = 16
+    refreshrate_hz = 2
+
+    [audio.gate]
+    hold_sec = 2.0
+    tail_sec = 1.0
+    dbpeak = -18
+    dbrms = -32
+
+[storage]
+    [storage.database]
+    dbpath = "postgres@localhost:5432/gptva"
+    embedder = "text-embedding-ada-002"
+
+    [storage.files]
+    record_audio = true
+    directory = "./files"
+    subpath_frmt = "%Y-%m-%d"
